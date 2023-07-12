@@ -11,6 +11,7 @@ import io.micrometer.core.instrument.binder.system.ProcessorMetrics;
 import io.micrometer.core.instrument.binder.system.UptimeMetrics;
 import io.micrometer.prometheus.PrometheusConfig;
 import io.micrometer.prometheus.PrometheusMeterRegistry;
+import io.prometheus.client.cache.caffeine.CacheMetricsCollector;
 import reactor.core.publisher.Mono;
 import ru.tinkoff.kora.application.graph.All;
 import ru.tinkoff.kora.application.graph.Lifecycle;
@@ -174,4 +175,8 @@ public interface MetricsModule {
         return new MicrometerCacheMetrics(meterRegistry);
     }
 
+    @DefaultComponent
+    default CacheMetricsCollector cacheMetricsCollector() {
+        return new CacheMetricsCollector().register();
+    }
 }

@@ -18,4 +18,6 @@ dependencies {
     compileOnly project(':resilient:resilient-retry')
     compileOnly project(':resilient:resilient-timeout')
     compileOnly project(':cache:cache-common')
+    compileOnly project(':cache:cache-caffeine')
+    compileOnly libs.prometheus.collector.caffeine
 }
